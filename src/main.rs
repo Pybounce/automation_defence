@@ -1,9 +1,18 @@
+mod automation;
+
+use automation::*;
 use bevy::prelude::*;
+use temp::*;
+
+
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_systems(Startup, setup)
+        //.add_systems(Startup, setup)
+        //.add_systems(Update, (feed_belts, progress_belts))
+        .add_systems(Startup, insert_belts)
+        .add_systems(Update, (print_belts, manually_progress, manually_feed))
         .run();
 }
 
